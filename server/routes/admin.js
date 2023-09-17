@@ -27,6 +27,9 @@ const authMiddleware = (req,res,next)=>{
         res.status(401).json({message: 'unauthorized'});
     }
 }
+
+// admin -get
+
 router.get('/admin',async(req,res)=>{
     try{
         const locals = {
@@ -122,7 +125,6 @@ router.post('/register', async(req,res)=>{
         const{username,password} = req.body;
         const hashedPassword = await bcrypt.hash(password, 10);
         try{
-            
             const user = await User.create({username, password: hashedPassword});
             res.status(201).json({message: 'User Created', user});
         }
@@ -130,7 +132,7 @@ router.post('/register', async(req,res)=>{
             if(error.code === 11000){
                 res.status(409).json({message: 'User already in use'});
             }
-            res.status(500).json({message : 'Internal server error'});
+             else res.status(500).json({message : 'Internal server error'});
         }
     }
     catch(error){
@@ -230,7 +232,7 @@ router.delete('/delete-post/:id', authMiddleware, async(req,res)=>{
 router.get('/logout',(req,res)=>{
     res.clearCookie('token');
     // res.json({message: 'Logged out Successfully.'});
-    res.redirect('/');
+    res.redirect('/admin');
 });
 
 
