@@ -102,7 +102,21 @@ router.get ('/dashboard',authMiddleware, async (req,res)=>{
 // });
 
 // Post /admin - register
+// sign-up page
 
+router.get('/signup',async(req,res)=>{
+    try{
+        const locals = {
+            title:"SignUp",
+            description: "Simple personal blog app."
+        }
+        res.render('admin/signup',{locals,layout:adminLayout});
+
+    }
+    catch(error){
+        console.log(error);
+    }
+});
 router.post('/register', async(req,res)=>{
     try{
         const{username,password} = req.body;
