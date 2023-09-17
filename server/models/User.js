@@ -2,7 +2,7 @@ const mongoose=require(`mongoose`);
 
 const Schema=mongoose.Schema;
 const UserSchema= new Schema({
-    title:{
+    username:{
         type: String,
         required: true,
         unique: true
