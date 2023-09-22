@@ -12,6 +12,10 @@
     --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
     --border-radius: 10px;
 }
+.info{
+    font-size: var(--font-size-md);
+}
+
 
 body{
     font-family: 'Poppins', sans-serif;
